@@ -5,8 +5,32 @@ class Game {
       //this.message = 'Yam yam' // or maybe a sound//
       this.player = new Player(this);
       
-      this.dangers = []            
+      this.dangers = []
+      this.foods = []  
+      this.enableControls();          
     }
+
+    enableControls () {
+        window.addEventListener('keydown', (event) => {
+            const code = event.code;
+            switch (code) {
+                case 'ArrowUp':
+                    this.player.y -= 10;
+                    break;
+                case 'ArrowDown':
+                    this.player.y += 10;
+                    break;
+                case 'ArrowLeft':
+                    this.player.x -= 10;
+                    break;
+                case 'ArrowRight':
+                    this.player.x += 10;
+                    break;    
+            }
+        });
+
+    }
+
 
     generateDanger () {
         const dangerSpeed = Math.random() + 0.01;
@@ -14,6 +38,20 @@ class Game {
         const dangerY = Math.random() * 500 - 480;
         const danger = new Danger(this, dangerX, dangerY, dangerSpeed);
         this.dangers.push(danger);
+    }
+
+    generateFood () {
+        const foodSpeed = Math.random() + 0.01;
+        const foodX = Math.random() * 500 - 20; //or this.canvas.width
+        const foodY = Math.random() * 500 - 440;
+           if (this.foods.length < 10) {
+            const food = new Food(this, foodX, foodY, foodSpeed);
+            this.foods.push(food)
+        }
+
+        }
+    removingJunk () {
+
     }
   // adding animation via loop
     loop () {
@@ -25,28 +63,39 @@ class Game {
     }
   
     runLogic () {
-       this.player.x += 1;
-    //   this.food.y += 1;
-
+        
+        
        if (Math.random() < 0.01) {
            this.generateDanger();
          }
        for (const danger of this.dangers) {
            danger.runLogic();
        }
+
+       if (Math.random() < 0.003) {
+        this.generateFood();
+      }
+        for (const food of this.foods) {
+        food.runLogic();
     }
+}
   
-    draw() {
+    draw () { 
       this.context.clearRect(0,0,500,500);  
       this.player.draw();
-    //  this.food.draw();
+    
       for (const danger of this.dangers) {
         danger.draw();
+    } 
+
+      for (const food of this.foods) {
+            food.draw();  
     }
-    }
+    
 
 }
 
+}
 
 //class Game {
  // constructor(canvasElement) {
@@ -94,4 +143,5 @@ class Game {
 //    this.player.draw();
 //    this.drawScore();
 //  }
-//}
+//
+

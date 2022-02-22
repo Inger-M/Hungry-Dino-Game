@@ -4,7 +4,7 @@ class Player {
     constructor(gameInstance) {
       this.game = gameInstance;
       this.x = 100;
-      this.y = 200;
+      this.y = 300;
       this.width = 50;
       this.height = 50;
     }
@@ -22,5 +22,7 @@ class Player {
   }
   
   const player = new Player();
+
+
  
   

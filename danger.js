@@ -7,6 +7,14 @@ class Danger {
     this.width = 10;
     this.height = 10;
   }
+  checkIntersection(element) {
+    return (
+      player.x + player.width > this.x &&
+      player.x < this.x + this.width &&
+      player.y + player.height > this.y &&
+      player.y < this.y + this.height
+    );
+  }
 
   runLogic() {
     this.y += this.speed;

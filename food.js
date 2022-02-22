@@ -1,17 +1,18 @@
 // Burgers, Icecream, Pizza!
 
 class Food {
-  constructor(gameInstance) {
+  constructor(gameInstance, x, y, speed) {
     this.game = gameInstance;
     this.x = x;
-    this.y = this.y;
-    this.width = 40;
-    this.height = 40;
+    this.y = y;
+    this.width = 70;
+    this.height = 70;
+    this.speed = speed;
   }
 
-  //   runLogic () {
-  //     this.food.y += 1;
-  // }
+  runLogic() {
+    this.y += this.speed;
+  }
 
   draw() {
     this.game.context.save();
