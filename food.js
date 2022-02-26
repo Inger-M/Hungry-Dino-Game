@@ -1,4 +1,6 @@
 // Burgers, Icecream, Pizza!
+const foodImage = new Image();
+foodImage.src = '/Game Images/burger.png'
 
 class Food {
   constructor(gameInstance, x, y, speed) {
@@ -26,7 +28,7 @@ class Food {
   draw() {
     this.game.context.save();
     this.game.context.fillStyle = 'orange';
-    this.game.context.fillRect(this.x, this.y, this.width, this.height);
+    this.game.context.drawImage(foodImage, this.x, this.y, this.width, this.height);
     this.game.context.restore();
   }
 }

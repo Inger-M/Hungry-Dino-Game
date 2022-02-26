@@ -72,6 +72,7 @@ class Game {
         console.log('areIntersecting');
         const indexOfDanger = this.dangers.indexOf(danger);
         this.dangers.splice(indexOfDanger, 1);
+        this.player.shrinkPlayersize();
       }
     }
 
