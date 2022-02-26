@@ -7,6 +7,7 @@ class Player {
       this.y = 300;
       this.width = 50;
       this.height = 50;
+      this.grow = 1.1;
     }
 
     draw() {
@@ -19,6 +20,19 @@ class Player {
       //this.message //dont know how to finish this...//
       this.game.context.restore();
     }
+
+    growPlayersize () {
+      if (this.width && this.height < 350) {
+        const growWidth = this.width *= this.grow;
+        const growHeight = this.height *= this.grow; 
+      } else {
+          console.log('Dino is full now Well done!');
+        }
+  
+      
+      
+    }
+     
   }
   
   const player = new Player();
