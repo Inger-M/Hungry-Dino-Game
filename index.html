@@ -12,18 +12,15 @@
       <h1>Hungry Dino</h1>
     </header>
 
-    <div>
+    <div class="screen" id="start-screen">
+      <h2>Feed the Dino!</h2>
       <button>Start Playing</button>
     </div>
-    <div>
-      <canvas id="canvas" width="500" height="500"></canvas>
-      <img />
-      <!---image of dino, to be referenced using the Image() contructor in .js-->
+    <div class="screen" id="playing-screen" style="display: none;">
+      <canvas id="canvas" width="500" height="500"></canvas> 
     </div>
-    <div>
-      
-    </div>
-    <div>
+    <div class="screen" id="game-over-screen" style="display: none;">
+      <h2>Oh no! You are dead</h2>
       <button>Play again</button>
     </div>
 

@@ -1,5 +1,5 @@
 const raptorImage = new Image();
-raptorImage.src = '/Game Images/dragon_attack.png'
+raptorImage.src = '/Game Images/Wispy1.png';
 
 class Danger {
   constructor(gameInstance, x, y, speed) {

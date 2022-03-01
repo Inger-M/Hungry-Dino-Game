@@ -1,13 +1,31 @@
 class Game {
-  constructor(canvasElement) {
+  constructor(canvasElement, screens) {
     this.canvas = canvasElement;
     this.context = canvasElement.getContext('2d');
-    //this.message = 'Yam yam' // or maybe a sound//
-    this.player = new Player(this);
+    this.screens = screens;
+  }
 
+  start() {
+    this.player = new Player(this);
+    this.gameOver = false;
     this.dangers = [];
     this.foods = [];
     this.enableControls();
+    this.displayScreen('play');
+    this.loop();
+  }
+
+  displayScreen(name) {
+    for (let screenName in this.screens) {
+      this.screens[screenName].style.display = 'none';
+    }
+    this.screens[name].style.display = '';
+  }
+
+  lose() {
+    if ((this.gameOver = true)) {
+      this.displayScreen('end');
+    }
   }
 
   enableControls() {
@@ -47,12 +65,7 @@ class Game {
       this.foods.push(food);
     }
   }
-  removingJunk() {
-    //if () {//our of canvas 500 *500 then//))) {
-    //}
-    //const this.foods.slice()
-  }
-  // use splice
+
   loop() {
     window.requestAnimationFrame(() => {
       this.runLogic();
@@ -73,6 +86,11 @@ class Game {
         const indexOfDanger = this.dangers.indexOf(danger);
         this.dangers.splice(indexOfDanger, 1);
         this.player.shrinkPlayersize();
+        if (this.player.end === true) {
+          console.log('dead');
+          this.gameOver = true;
+          this.lose();
+        }
       }
     }
 

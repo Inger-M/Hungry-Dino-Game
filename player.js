@@ -12,6 +12,7 @@ class Player {
       this.height = 150;
       this.grow = 1.7;
       this.shrink = 2;
+      this.end = false;
     }
 
     draw() {
@@ -41,7 +42,10 @@ class Player {
         const shrinkHight = this.height /= this.shrink;
         console.log('Run! A raptor is trying to eat you!');  
       } else if (this.width && this.height < 30) {
+        this.end = true;
+        console.log('here', game.gameOver)
         console.log('Oh no your dead! A raptor ate you');
+        
       } else {
         const shrinkWidth = this.width /= this.shrink;
         const shrinkHight = this.height /= this.shrink;
