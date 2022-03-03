@@ -130,7 +130,7 @@ class Game {
         this.player.growPlayersize();
           console.log(player.height);
           console.log(player.width);
-        if (this.player.width > 600) {
+        if (this.player.width > 500) {
           this.win()
         }
       }
