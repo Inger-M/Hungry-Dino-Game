@@ -1,5 +1,4 @@
-
-const playingGameSound = new Audio("/Sounds/HungryDino_ost_64kb.mp3");
+const playingGameSound = new Audio('/Sounds/HungryDino_ost_64kb.mp3');
 
 class Game {
   constructor(canvasElement, screens) {
@@ -31,7 +30,7 @@ class Game {
     if ((this.gameOver = true)) {
       this.displayScreen('end');
       this.running = false;
-      playingGameSound.stop();
+      playingGameSound.pause();
     }
   }
 
@@ -40,11 +39,11 @@ class Game {
     this.running = false;
     playingGameSound.pause();
   }
-  
+
   //playMusic () {
-    //if (// screen play is on then... this.displayScreen('play')) {
-      
-    //}
+  //if (// screen play is on then... this.displayScreen('play')) {
+
+  //}
   //}
 
   enableControls() {
@@ -128,10 +127,10 @@ class Game {
         const indexOfFood = this.foods.indexOf(food);
         this.foods.splice(indexOfFood, 1);
         this.player.growPlayersize();
-          console.log(player.height);
-          console.log(player.width);
+        console.log(player.height);
+        console.log(player.width);
         if (this.player.width > 500) {
-          this.win()
+          this.win();
         }
       }
     }
@@ -150,4 +149,3 @@ class Game {
     }
   }
 }
-
