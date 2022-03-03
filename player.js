@@ -10,7 +10,7 @@ class Player {
       this.y = 300;
       this.width = 200;
       this.height = 150;
-      this.grow = 1.7;
+      this.grow = 1.4;
       this.shrink = 2;
       this.end = false;
     }
@@ -28,9 +28,9 @@ class Player {
     }
 
     growPlayersize () {
-      if (this.width && this.height < 200) {
-        const growWidth = this.width *= this.grow;
-        const growHeight = this.height *= this.grow; 
+      if (this.width < 600) {
+          this.width *= this.grow;
+          this.height *= this.grow; 
       } else {
           console.log('Dino is full now. Well done!');
         } 
@@ -38,8 +38,8 @@ class Player {
      
     shrinkPlayersize () {
       if (this.width && this.height > 30){
-        const shrinkWidth = this.width /= this.shrink;
-        const shrinkHight = this.height /= this.shrink;
+          this.width /= this.shrink;
+          this.height /= this.shrink;
         console.log('Run! A raptor is trying to eat you!');  
       } else if (this.width && this.height < 30) {
         this.end = true;

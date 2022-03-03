@@ -1,3 +1,6 @@
+
+const playingGameSound = new Audio("/Sounds/HungryDino_ost_64kb.mp3");
+
 class Game {
   constructor(canvasElement, screens) {
     this.canvas = canvasElement;
@@ -12,7 +15,9 @@ class Game {
     this.foods = [];
     this.enableControls();
     this.displayScreen('play');
+    this.running = true;
     this.loop();
+    playingGameSound.play();
   }
 
   displayScreen(name) {
@@ -25,8 +30,22 @@ class Game {
   lose() {
     if ((this.gameOver = true)) {
       this.displayScreen('end');
+      this.running = false;
+      playingGameSound.stop();
     }
   }
+
+  win() {
+    this.displayScreen('win');
+    this.running = false;
+    playingGameSound.pause();
+  }
+  
+  //playMusic () {
+    //if (// screen play is on then... this.displayScreen('play')) {
+      
+    //}
+  //}
 
   enableControls() {
     window.addEventListener('keydown', (event) => {
@@ -70,7 +89,9 @@ class Game {
     window.requestAnimationFrame(() => {
       this.runLogic();
       this.draw();
-      this.loop();
+      if (this.running) {
+        this.loop();
+      }
     });
   }
 
@@ -78,6 +99,7 @@ class Game {
     if (Math.random() < 0.01) {
       this.generateDanger();
     }
+
     for (const danger of this.dangers) {
       danger.runLogic();
       const areIntersecting = danger.checkIntersection(this.player);
@@ -97,6 +119,7 @@ class Game {
     if (Math.random() < 0.009) {
       this.generateFood();
     }
+
     for (const food of this.foods) {
       food.runLogic();
       const areIntersecting = food.checkIntersection(this.player);
@@ -105,6 +128,11 @@ class Game {
         const indexOfFood = this.foods.indexOf(food);
         this.foods.splice(indexOfFood, 1);
         this.player.growPlayersize();
+          console.log(player.height);
+          console.log(player.width);
+        if (this.player.width > 600) {
+          this.win()
+        }
       }
     }
   }
@@ -123,50 +151,3 @@ class Game {
   }
 }
 
-//class Game {
-// constructor(canvasElement) {
-//   this.canvas = canvasElement;
-//   this.context = canvasElement.getContext('2d');
-//   this.score = 100;
-//   this.player = new Player(this);
-//   this.enemies = [];
-//   this.enableControls();
-// }
-
-// loop() {
-//   window.requestAnimationFrame(() => {
-//     this.runLogic();
-//     this.draw();
-//     this.loop();
-//   });
-// }
-// enableControls() {
-//   window.addEventListener('keydown', (event) => {
-//     const code = event.code;
-//     switch (code) {
-//       case 'ArrowUp':
-//         this.player.y -= 10;
-//         break;
-//       case 'ArrowDown':
-//         this.player.y += 10;
-//         break;
-//       case 'ArrowRight':
-//         this.player.x += 10;
-//         break;
-//       case 'ArrowLeft':
-//         this.player.x -= 10;
-//         break;
-
-//     }
-//   });
-// }
-
-//  draw() {
-//    this.context.clearRect(0, 0, 500, 500);
-//    for (const enemy of this.enemies) {
-//      enemy.draw();
-//    }
-//    this.player.draw();
-//    this.drawScore();
-//  }
-//
