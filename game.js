@@ -40,11 +40,6 @@ class Game {
     playingGameSound.pause();
   }
 
-  //playMusic () {
-  //if (// screen play is on then... this.displayScreen('play')) {
-
-  //}
-  //}
 
   enableControls() {
     window.addEventListener('keydown', (event) => {
@@ -75,8 +70,8 @@ class Game {
   }
 
   generateFood() {
-    const foodSpeed = Math.random() + 0.01;
-    const foodX = Math.random() * 500 - 20; //or this.canvas.width
+    const foodSpeed = Math.random() + 0.02;
+    const foodX = Math.random() * 500 - 10; //or this.canvas.width
     const foodY = Math.random() * 500 - 440;
     if (this.foods.length < 10) {
       const food = new Food(this, foodX, foodY, foodSpeed);

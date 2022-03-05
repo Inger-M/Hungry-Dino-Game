@@ -4,7 +4,7 @@
   width: 500px;
   height: 500px;
   display: flex;
-  border: 10px solid black;
+  border: 10px solid whitesmoke;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -13,7 +13,7 @@
 }
 
 canvas {
-    border: 10px solid black;
+    border: 10px solid  whitesmoke;
     background-color: rgb(8, 8, 8);
 }
 
@@ -26,16 +26,20 @@ body {
   justify-content: center;
   font-family: 'Courier New', Courier, monospace;
   height: 100%; 
+  
 }
 
 button {
     font: inherit;
     background-color: rgb(32, 221, 73);
     color: black;
-    border: 0;
+    border: 100;
+    border-color: white;
     padding: 1em;
     margin-bottom: 14em;
     margin-top: 1em;
+    border-radius: 5px;
+    width: 200px;
 }
 
 h1 {
@@ -46,6 +50,9 @@ h2 {
   color: white;
 }
 
+span {
+  font-weight: bold;
+}
  
     
 
